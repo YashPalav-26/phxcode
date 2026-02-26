@@ -16,11 +16,9 @@ const LANGUAGE_MAP = {
 };
 
 export const executeCode = async (language, sourceCode, input = "") => {
-  // Check if we're in production (no Vite dev server)
+
   const isProduction = import.meta.env.MODE === "production";
-  
-  // In production, the serverless function handles the API key
-  // In development, we need the API key for the proxy
+
   if (!isProduction) {
     const API_KEY = import.meta.env.VITE_ONECOMPILER_API_KEY;
     if (!API_KEY) {
