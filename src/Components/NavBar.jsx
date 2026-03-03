@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -12,8 +12,6 @@ import phxlogo from "../assets/phxlogo.svg";
 const Navbar = ({
   language,
   handleLanguageChange,
-  theme,
-  setTheme,
   isDarkMode,
   toggleTheme,
   onRunCode,
@@ -44,7 +42,6 @@ const Navbar = ({
           : "bg-white border-[#e0e0e0] text-gray-900"
       }`}
     >
-      {/* Left Section: Logo & Branding */}
       <div className="flex items-center space-x-3 flex-shrink-0">
         <img
           src={phxlogo}
@@ -58,10 +55,7 @@ const Navbar = ({
           </span>
         </div>
       </div>
-
-      {/* Center Section: Language Selector & Run Button */}
       <div className="flex items-center space-x-3 flex-grow justify-center px-4">
-        {/* Language Dropdown */}
         <div className="relative">
           <button
             onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
@@ -122,8 +116,6 @@ const Navbar = ({
             </div>
           )}
         </div>
-
-        {/* Run Button - Primary CTA */}
         <button
           onClick={onRunCode}
           className={`flex items-center space-x-2 px-5 py-1.5 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 active:scale-95 ${
@@ -137,10 +129,7 @@ const Navbar = ({
           <span className="hidden sm:inline">Run</span>
         </button>
       </div>
-
-      {/* Right Section: Actions */}
       <div className="flex items-center space-x-2 flex-shrink-0">
-        {/* New File Button */}
         <button
           onClick={onNewFile}
           className={`p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
@@ -153,7 +142,6 @@ const Navbar = ({
         >
           <FontAwesomeIcon icon={faPlus} className="w-5 h-5" />
         </button>
-        {/* Save Button */}
         <button
           onClick={saveCode}
           className={`p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
@@ -166,7 +154,6 @@ const Navbar = ({
         >
           <FontAwesomeIcon icon={faSave} className="w-5 h-5" />
         </button>
-        {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
           className={`p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
