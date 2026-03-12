@@ -14,9 +14,9 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 #root {
@@ -25,7 +25,6 @@ body {
   flex-direction: column;
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -53,18 +52,17 @@ body {
   background: #555555;
 }
 
-/* Smooth transitions for theme switching */
 body {
-  transition: background-color 200ms ease, color 200ms ease;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
-/* Focus visible styles for better accessibility */
 :focus-visible {
   outline: 2px solid;
   outline-offset: 2px;
 }
 
-/* Remove default focus ring from buttons */
 button:focus-visible {
   outline-offset: 2px;
 }
