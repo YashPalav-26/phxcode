@@ -16,9 +16,16 @@ const LANGUAGE_MAP = {
 };
 
 export const executeCode = async (language, sourceCode, input = "") => {
-  const API_KEY = import.meta.env.VITE_ONECOMPILER_API_KEY;
-  if (!API_KEY) {
-    throw new Error("OneCompiler API key is not configured. Please set VITE_ONECOMPILER_API_KEY in your .env file.");
+  // Check if we're in production (no Vite dev server)
+  const isProduction = import.meta.env.MODE === "production";
+  
+  // In production, the serverless function handles the API key
+  // In development, we need the API key for the proxy
+  if (!isProduction) {
+    const API_KEY = import.meta.env.VITE_ONECOMPILER_API_KEY;
+    if (!API_KEY) {
+      throw new Error("OneCompiler API key is not configured. Please set VITE_ONECOMPILER_API_KEY in your .env file.");
+    }
   }
 
   try {
@@ -50,7 +57,6 @@ export const executeCode = async (language, sourceCode, input = "") => {
       {
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": API_KEY,
         },
       }
     );
