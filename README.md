@@ -2,7 +2,7 @@
 
 <div align="center">
 
-# ApexScript Code Editor
+# PhxCode Code Editor
 
 [![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat&logo=react)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-5.4.10-646CFF?style=flat&logo=vite)](https://vitejs.dev)
@@ -17,7 +17,7 @@ A powerful, web-based code editor built with React for multi-language code execu
 
 ## 📖 Description
 
-ApexScript Code Editor is a modern, feature-rich online code editor that allows developers to write, edit, and execute code in multiple programming languages directly from their browser. Built with React, Vite, and Tailwind CSS, it provides a seamless coding experience with syntax highlighting, stdin input support, and real-time code execution via the OneCompiler API.
+PhxCode Code Editor is a modern, feature-rich online code editor that allows developers to write, edit, and execute code in multiple programming languages directly from their browser. Built with React, Vite, and Tailwind CSS, it provides a seamless coding experience with syntax highlighting, stdin input support, and real-time code execution via the OneCompiler API.
 
 ## ✨ Features
 
@@ -34,15 +34,15 @@ ApexScript Code Editor is a modern, feature-rich online code editor that allows 
 
 ## 🛠 Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| **Framework** | React 18.3.1 |
-| **Build Tool** | Vite 5.4.10 |
-| **Styling** | Tailwind CSS 3.4.15 |
-| **Code Editor** | Monaco Editor 4.6.0 |
-| **HTTP Client** | Axios 1.7.7 |
-| **Icons** | Font Awesome 6.7.0 |
-| **Code Execution** | OneCompiler API |
+| Category           | Technology          |
+| ------------------ | ------------------- |
+| **Framework**      | React 18.3.1        |
+| **Build Tool**     | Vite 5.4.10         |
+| **Styling**        | Tailwind CSS 3.4.15 |
+| **Code Editor**    | Monaco Editor 4.6.0 |
+| **HTTP Client**    | Axios 1.7.7         |
+| **Icons**          | Font Awesome 6.7.0  |
+| **Code Execution** | OneCompiler API     |
 
 ## 🚀 Getting Started
 
@@ -58,8 +58,8 @@ Before running the project, ensure you have the following installed:
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/YashPalav-26/apexscipt-code-editor.git
-cd ApexScript
+git clone https://github.com/YashPalav-26/phxcode.git
+cd phxcode
 ```
 
 2. **Install dependencies**
@@ -110,36 +110,38 @@ npm run preview
 
 ## 📝 Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `VITE_ONECOMPILER_API_KEY` | Your OneCompiler API key for code execution | Yes |
+| Variable                   | Description                                 | Required |
+| -------------------------- | ------------------------------------------- | -------- |
+| `VITE_ONECOMPILER_API_KEY` | Your OneCompiler API key for code execution | Yes      |
 
 ## 🌍 Supported Languages
 
-| Language | Version | File Extension |
-|----------|---------|----------------|
-| JavaScript | 18.15.0 | `.js` |
-| TypeScript | 5.0.3 | `.ts` |
-| Python | 3.10.0 | `.py` |
-| Java | 15.0.2 | `.java` |
-| C# | 6.12.0 | `.cs` |
-| PHP | 8.2.3 | `.php` |
-| C | 10.2.0 | `.c` |
-| C++ | 11.2.0 | `.cpp` |
+| Language   | Version | File Extension |
+| ---------- | ------- | -------------- |
+| JavaScript | 18.15.0 | `.js`          |
+| TypeScript | 5.0.3   | `.ts`          |
+| Python     | 3.10.0  | `.py`          |
+| Java       | 15.0.2  | `.java`        |
+| C#         | 6.12.0  | `.cs`          |
+| PHP        | 8.2.3   | `.php`         |
+| C          | 10.2.0  | `.c`           |
+| C++        | 11.2.0  | `.cpp`         |
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you'd like to contribute to ApexScript Code Editor, please follow these steps:
+Contributions are welcome! If you'd like to contribute to PhxCode Code Editor, please follow these steps:
 
 1. **Fork the repository**
    Click the "Fork" button at the top right of this page.
 
 2. **Clone your fork**
+
    ```bash
-   git clone https://github.com/YashPalav-26/apexscipt-code-editor.git
+   git clone https://github.com/YashPalav-26/phxcode.git
    ```
 
 3. **Create a feature branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -148,11 +150,13 @@ Contributions are welcome! If you'd like to contribute to ApexScript Code Editor
    Implement your feature or bug fix.
 
 5. **Commit your changes**
+
    ```bash
    git commit -m "Add your descriptive commit message"
    ```
 
 6. **Push to your fork**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -180,6 +184,6 @@ Copyright © 2026 [Yash Palav](https://github.com/YashPalav-26)
 
 <div align="center">
 
-Built with ❤️ using React & Monaco Editor
+Built by Yash with ❤️ and lots of ☕ using React & Monaco Editor
 
 </div>
