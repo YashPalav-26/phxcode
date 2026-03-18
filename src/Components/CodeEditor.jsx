@@ -4,6 +4,7 @@ import EditorSection from "./EditorSection";
 import OutputSection from "./Output";
 import ResizableDivider from "./ResizableDivider";
 import useResizablePanel from "../hooks/useResizablePanel";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { CODE_SNIPPETS } from "../constants/constants";
 import { getLanguageConfig } from "../constants/languageConfig";
 import { executeCode } from "../api/api";
@@ -19,7 +20,21 @@ const CodeEditor = () => {
   const [input, setInput] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isCodeTouched, setIsCodeTouched] = useState(false);
+  const [executionTime, setExecutionTime] = useState(null);
+  const [memoryUsage, setMemoryUsage] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
+  const [saveTimestamp, setSaveTimestamp] = useState(null);
   const editorRef = useRef(null);
+
+  // Initialize localStorage hook for current language
+  const localStorage = useLocalStorage(
+    `phxcode_code_${language}`,
+    CODE_SNIPPETS[language] || "",
+  );
+  const localStorageTouched = useLocalStorage(
+    `phxcode_touched_${language}`,
+    "false",
+  );
 
   const {
     editorWidth,
@@ -30,15 +45,54 @@ const CodeEditor = () => {
     containerRef,
   } = useResizablePanel(60);
 
+  // Restore code and touched state on mount or language change
+  useEffect(() => {
+    const savedCode = localStorage.restore();
+    const savedTouched = localStorageTouched.restore() === "true";
+
+    if (savedCode && savedCode !== CODE_SNIPPETS[language]) {
+      setCode(savedCode);
+      setIsCodeTouched(savedTouched);
+    } else {
+      setCode(CODE_SNIPPETS[language] || "// Write your code here");
+      setIsCodeTouched(false);
+    }
+  }, [language]);
+
+  // Auto-save code when it changes
+  useEffect(() => {
+    if (code && code !== CODE_SNIPPETS[language]) {
+      localStorage.save(code);
+      localStorageTouched.immediate("true");
+      setIsSaved(true);
+      setSaveTimestamp(
+        new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      );
+    }
+  }, [code, language]);
+
   const handleCompileAndExecute = async () => {
     try {
       setOutput("");
       setError("");
+      setExecutionTime(null);
+      setMemoryUsage(null);
 
       const sourceCode = editorRef.current
         ? editorRef.current.getValue()
         : code;
       const result = await executeCode(language, sourceCode, input);
+
+      // Extract and set execution metrics
+      if (result.executionTime) {
+        setExecutionTime(result.executionTime);
+      }
+      if (result.memoryUsage) {
+        setMemoryUsage(result.memoryUsage);
+      }
 
       // Check if there's stderr output (errors)
       if (result.run && result.run.stderr) {
@@ -54,6 +108,8 @@ const CodeEditor = () => {
     } catch (err) {
       setError(err.message);
       setOutput(""); // Clear output on exception
+      setExecutionTime(null);
+      setMemoryUsage(null);
     }
   };
 
@@ -101,6 +157,11 @@ const CodeEditor = () => {
       setOutput("");
       setError("");
       setInput("");
+      // Clear localStorage for this language
+      localStorage.clear();
+      localStorageTouched.clear();
+      setIsSaved(false);
+      setSaveTimestamp(null);
     }
   };
 
@@ -150,6 +211,8 @@ const CodeEditor = () => {
               editorRef={editorRef}
               isDarkMode={isDarkMode}
               setIsCodeTouched={setIsCodeTouched}
+              isSaved={isSaved}
+              saveTimestamp={saveTimestamp}
             />
           </div>
 
@@ -176,6 +239,8 @@ const CodeEditor = () => {
               setInput={setInput}
               handleCompileAndExecute={handleCompileAndExecute}
               isDarkMode={isDarkMode}
+              executionTime={executionTime}
+              memoryUsage={memoryUsage}
             />
           </div>
         </div>
