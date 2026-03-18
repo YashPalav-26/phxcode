@@ -1,19 +1,7 @@
 import axios from "axios";
-import { LANGUAGE_VERSIONS } from "../constants/constants";
+import { LANGUAGE_VERSIONS, LANGUAGE_MAP, FILE_EXTENSIONS } from "../constants/languageConfig";
 
-const ONECOMPILER_API = "/api/execute"; 
-
-const LANGUAGE_MAP = {
-  javascript: "javascript",
-  typescript: "typescript",
-  python: "python",
-  python3: "python",
-  java: "java",
-  csharp: "csharp",
-  php: "php",
-  c: "c",
-  cpp: "cpp",
-};
+const ONECOMPILER_API = "/api/execute";
 
 export const executeCode = async (language, sourceCode, input = "") => {
 
@@ -105,16 +93,5 @@ export const executeCode = async (language, sourceCode, input = "") => {
 };
 
 function getFileExtension(language) {
-  const extensions = {
-    javascript: "js",
-    typescript: "ts",
-    python: "py",
-    python3: "py",
-    java: "java",
-    csharp: "cs",
-    php: "php",
-    c: "c",
-    cpp: "cpp",
-  };
-  return extensions[language] || "txt";
+  return FILE_EXTENSIONS[language] || "txt";
 }
