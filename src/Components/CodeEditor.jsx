@@ -174,11 +174,7 @@ const CodeEditor = () => {
       {/* Navbar */}
       <Navbar
         language={language}
-        handleLanguageChange={(e) => {
-          const selectedLanguage = e.target.value;
-          setLanguage(selectedLanguage);
-          setCode(CODE_SNIPPETS[selectedLanguage]);
-        }}
+        handleLanguageChange={handleLanguageChange}
         theme={theme}
         setTheme={setTheme}
         isDarkMode={isDarkMode}
