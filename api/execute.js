@@ -42,6 +42,12 @@ export default async function handler(req, res) {
       php: "php",
       c: "c",
       cpp: "cpp",
+      go: "go",
+      rust: "rust",
+      kotlin: "kotlin",
+      swift: "swift",
+      ruby: "ruby",
+      bash: "bash",
     };
 
     const oneCompilerLanguage = LANGUAGE_MAP[language];
