@@ -8,6 +8,8 @@ const EditorSection = ({
   code,
   setCode,
   theme,
+  fontSize,
+  fontFamily,
   editorRef,
   isDarkMode,
   setIsCodeTouched,
@@ -90,10 +92,9 @@ const EditorSection = ({
               editorRef.current = editor;
 
               editor.updateOptions({
-                fontFamily:
-                  "'JetBrains Mono', 'Fira Code', 'Consolas', monospace",
-                fontSize: 14,
-                lineHeight: 22,
+                fontFamily: fontFamily || "'JetBrains Mono', monospace",
+                fontSize: fontSize || 14,
+                lineHeight: (fontSize || 14) * 1.5,
                 minimap: { enabled: true, scale: 1 },
                 scrollBeyondLastLine: false,
                 smoothScrolling: true,
@@ -149,11 +150,10 @@ const EditorSection = ({
               </div>
             }
             options={{
-              fontFamily:
-                "'JetBrains Mono', 'Fira Code', 'Consolas', monospace",
-              fontSize: 14,
+              fontFamily: fontFamily || "'JetBrains Mono', monospace",
+              fontSize: fontSize || 14,
               fontLigatures: true,
-              lineHeight: 22,
+              lineHeight: (fontSize || 14) * 1.5,
               minimap: { enabled: true, scale: 1 },
               scrollBeyondLastLine: false,
               smoothScrolling: true,
