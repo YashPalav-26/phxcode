@@ -1,4 +1,3 @@
-import React from "react";
 import Editor from "@monaco-editor/react";
 import { MONACO_LANGUAGE_MAP } from "../constants/languageConfig";
 import SaveIndicator from "./SaveIndicator";
