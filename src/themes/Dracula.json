@@ -1,0 +1,18 @@
+{
+  "base": "vs-dark",
+  "inherit": true,
+  "rules": [
+    {"token": "comment", "foreground": "6272a4"},
+    {"token": "string", "foreground": "f1fa8c"},
+    {"token": "keyword", "foreground": "ff79c6"}
+  ],
+  "colors": {
+    "editor.foreground": "#f8f8f2",
+    "editor.background": "#282a36",
+    "editorCursor.foreground": "#f8f8f0"
+  },
+  "uiColors": {
+    "accent": "#bd93f9",
+    "foreground": "#f8f8f2"
+  }
+}
