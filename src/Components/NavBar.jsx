@@ -40,9 +40,8 @@ const Navbar = ({
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-4 lg:px-6 border-b transition-colors duration-200 ${
-        "bg-[var(--theme-bg)] border-[var(--theme-border)] text-[var(--theme-fg)]"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-4 lg:px-6 border-b transition-colors duration-200 ${"bg-[var(--theme-bg)] border-[var(--theme-border)] text-[var(--theme-fg)]"
+        }`}
     >
       <div className="flex items-center space-x-3 flex-shrink-0">
         <img
@@ -61,17 +60,15 @@ const Navbar = ({
         <div className="relative">
           <button
             onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-            className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 ${
-              isDarkMode
+            className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 ${isDarkMode
                 ? "bg-[var(--theme-bg-hover)] border-[var(--theme-border)] hover:bg-[var(--theme-input)] focus:ring-[var(--theme-accent)]"
                 : "bg-[var(--theme-bg-hover)] border-[var(--theme-border)] hover:bg-[var(--theme-bg-hover)] focus:ring-[var(--theme-accent)]"
-            }`}
+              }`}
             aria-label="Select programming language"
           >
             <span
-              className={`text-xs font-mono font-bold ${
-                "text-[var(--theme-accent)]"
-              }`}
+              className={`text-xs font-mono font-bold ${"text-[var(--theme-accent)]"
+                }`}
             >
               {currentLanguage.icon}
             </span>
@@ -82,11 +79,10 @@ const Navbar = ({
 
           {isLangDropdownOpen && (
             <div
-              className={`absolute top-full left-0 mt-2 rounded-lg shadow-xl border z-50 max-h-96 overflow-y-auto min-w-56 ${
-                isDarkMode
+              className={`absolute top-full left-0 mt-2 rounded-lg shadow-xl border z-50 max-h-96 overflow-y-auto min-w-56 ${isDarkMode
                   ? "bg-[var(--theme-sidebar)] border-[var(--theme-border)]"
                   : "bg-[var(--theme-bg)] border-[var(--theme-border)]"
-              }`}
+                }`}
             >
               {languages.map((lang) => (
                 <button
@@ -95,16 +91,14 @@ const Navbar = ({
                     handleLanguageChange({ target: { value: lang.value } });
                     setIsLangDropdownOpen(false);
                   }}
-                  className={`w-full px-4 py-2.5 text-left text-sm flex items-center space-x-2 transition-colors duration-150 ${
-                    language === lang.value
+                  className={`w-full px-4 py-2.5 text-left text-sm flex items-center space-x-2 transition-colors duration-150 ${language === lang.value
                       ? "bg-[var(--theme-active)]"
                       : "hover:bg-[var(--theme-bg-hover)]"
-                  }`}
+                    }`}
                 >
                   <span
-                    className={`text-xs font-mono font-bold min-w-8 ${
-                      "text-[var(--theme-accent)]"
-                    }`}
+                    className={`text-xs font-mono font-bold min-w-8 ${"text-[var(--theme-accent)]"
+                      }`}
                   >
                     {lang.icon}
                   </span>
@@ -119,11 +113,10 @@ const Navbar = ({
         </div>
         <button
           onClick={onRunCode}
-          className={`flex items-center space-x-2 px-5 py-1.5 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 active:scale-95 ${
-            isDarkMode
+          className={`flex items-center space-x-2 px-5 py-1.5 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 active:scale-95 ${isDarkMode
               ? "bg-[#2ea44f] hover:bg-[#2c974b] text-[var(--theme-fg)] focus:ring-[#2ea44f] focus:ring-offset-[#1e1e1e]"
               : "bg-[#2ea44f] hover:bg-[#2c974b] text-[var(--theme-fg)] focus:ring-[#2ea44f] focus:ring-offset-white"
-          }`}
+            }`}
           aria-label="Run code (Ctrl+Enter)"
         >
           <FontAwesomeIcon icon={faPlay} className="w-3.5 h-3.5" />
@@ -133,9 +126,8 @@ const Navbar = ({
       <div className="flex items-center space-x-2 flex-shrink-0">
         <button
           onClick={onNewFile}
-          className={`p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
-            "hover:bg-[var(--theme-bg-hover)] focus:ring-[var(--theme-accent)]"
-          }`}
+          className={`p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${"hover:bg-[var(--theme-bg-hover)] focus:ring-[var(--theme-accent)]"
+            }`}
           aria-label="New file"
           title="Create new file"
         >
@@ -143,9 +135,8 @@ const Navbar = ({
         </button>
         <button
           onClick={saveCode}
-          className={`p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
-            "hover:bg-[var(--theme-bg-hover)] focus:ring-[var(--theme-accent)]"
-          }`}
+          className={`p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${"hover:bg-[var(--theme-bg-hover)] focus:ring-[var(--theme-accent)]"
+            }`}
           aria-label="Save code"
           title="Download code"
         >
@@ -162,9 +153,8 @@ const Navbar = ({
         />
         <button
           onClick={toggleTheme}
-          className={`p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
-            "hover:bg-[var(--theme-bg-hover)] focus:ring-[var(--theme-accent)]"
-          }`}
+          className={`p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${"hover:bg-[var(--theme-bg-hover)] focus:ring-[var(--theme-accent)]"
+            }`}
           aria-label={
             isDarkMode ? "Switch to light mode" : "Switch to dark mode"
           }

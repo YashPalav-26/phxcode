@@ -33,38 +33,33 @@ const EditorSection = ({
   return (
     <div className="flex-1 h-full min-h-0">
       <div
-        className={`h-full rounded-lg overflow-hidden border flex flex-col transition-colors duration-200 ${
-          isDarkMode
+        className={`h-full rounded-lg overflow-hidden border flex flex-col transition-colors duration-200 ${isDarkMode
             ? "bg-[var(--theme-bg)] border-[var(--theme-border)] shadow-lg shadow-black/20"
             : "bg-[var(--theme-bg)] border-[var(--theme-border)] shadow-lg shadow-black/5"
-        }`}
+          }`}
       >
         <div
-          className={`flex items-center justify-between px-4 py-2.5 border-b flex-shrink-0 ${
-            "bg-[var(--theme-sidebar)] border-[var(--theme-border)]"
-          }`}
+          className={`flex items-center justify-between px-4 py-2.5 border-b flex-shrink-0 ${"bg-[var(--theme-sidebar)] border-[var(--theme-border)]"
+            }`}
         >
           <div className="flex items-center space-x-2">
             <span
-              className={`text-sm font-semibold ${
-                "text-[var(--theme-fg)]"
-              }`}
+              className={`text-sm font-semibold ${"text-[var(--theme-fg)]"
+                }`}
             >
               {language === "cpp"
                 ? "C++"
                 : language.charAt(0).toUpperCase() + language.slice(1)}
             </span>
             <span
-              className={`text-xs ${
-                "text-[var(--theme-muted)]"
-              }`}
+              className={`text-xs ${"text-[var(--theme-muted)]"
+                }`}
             >
               •
             </span>
             <span
-              className={`text-xs ${
-                "text-[var(--theme-muted)]"
-              }`}
+              className={`text-xs ${"text-[var(--theme-muted)]"
+                }`}
             >
               UTF-8
             </span>
@@ -76,9 +71,8 @@ const EditorSection = ({
               timestamp={saveTimestamp}
             />
             <span
-              className={`text-xs ${
-                "text-[var(--theme-muted)]"
-              }`}
+              className={`text-xs ${"text-[var(--theme-muted)]"
+                }`}
             >
               Ln 1, Col 1
             </span>
@@ -147,9 +141,8 @@ const EditorSection = ({
             }}
             loading={
               <div
-                className={`flex items-center justify-center h-full ${
-                  "text-[var(--theme-muted)]"
-                }`}
+                className={`flex items-center justify-center h-full ${"text-[var(--theme-muted)]"
+                  }`}
               >
                 <div className="flex flex-col items-center space-y-3">
                   <div className="w-8 h-8 border-2 border-current border-t-transparent rounded-full animate-spin" />

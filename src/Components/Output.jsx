@@ -94,16 +94,14 @@ const OutputSection = ({
   return (
     <div
       ref={containerRef}
-      className={`flex flex-col border rounded-lg overflow-hidden transition-colors duration-200 h-full ${
-        isDarkMode
+      className={`flex flex-col border rounded-lg overflow-hidden transition-colors duration-200 h-full ${isDarkMode
           ? "bg-[var(--theme-bg)] border-[var(--theme-border)] shadow-lg shadow-black/20"
           : "bg-[var(--theme-bg)] border-[var(--theme-border)] shadow-lg shadow-black/5"
-      }`}
+        }`}
     >
       <div
-        className={`hidden lg:h-1 lg:cursor-ns-resize lg:flex lg:items-center lg:justify-center transition-colors duration-150 ${
-          "bg-[var(--theme-bg-hover)] hover:bg-[var(--theme-accent)]"
-        } ${isResizing ? ("bg-[var(--theme-accent)]") : ""}`}
+        className={`hidden lg:h-1 lg:cursor-ns-resize lg:flex lg:items-center lg:justify-center transition-colors duration-150 ${"bg-[var(--theme-bg-hover)] hover:bg-[var(--theme-accent)]"
+          } ${isResizing ? ("bg-[var(--theme-accent)]") : ""}`}
         onMouseDown={handleMouseDown}
       >
         <FontAwesomeIcon
@@ -112,20 +110,18 @@ const OutputSection = ({
         />
       </div>
       <div
-        className={`flex items-center justify-between border-b px-2 flex-shrink-0 ${
-          "bg-[var(--theme-sidebar)] border-[var(--theme-border)]"
-        }`}
+        className={`flex items-center justify-between border-b px-2 flex-shrink-0 ${"bg-[var(--theme-sidebar)] border-[var(--theme-border)]"
+          }`}
       >
         <div className="flex overflow-x-auto">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center space-x-2 px-4 py-2.5 text-sm border-b-2 transition-colors duration-150 flex-shrink-0 whitespace-nowrap ${
-                activeTab === tab.id
+              className={`flex items-center space-x-2 px-4 py-2.5 text-sm border-b-2 transition-colors duration-150 flex-shrink-0 whitespace-nowrap ${activeTab === tab.id
                   ? "text-[var(--theme-fg)] border-[var(--theme-accent)] bg-[var(--theme-bg)]"
                   : "text-[var(--theme-muted)] border-transparent hover:text-[var(--theme-fg)]"
-              }`}
+                }`}
               aria-label={`View ${tab.label}`}
             >
               <FontAwesomeIcon icon={tab.icon} className="w-3.5 h-3.5" />
@@ -142,9 +138,8 @@ const OutputSection = ({
         <div className="flex items-center space-x-1 flex-shrink-0">
           <button
             onClick={handleClearOutput}
-            className={`p-1.5 rounded transition-colors duration-150 ${
-              "text-[var(--theme-muted)] hover:bg-[var(--theme-bg-hover)] hover:text-[var(--theme-fg)]"
-            }`}
+            className={`p-1.5 rounded transition-colors duration-150 ${"text-[var(--theme-muted)] hover:bg-[var(--theme-bg-hover)] hover:text-[var(--theme-fg)]"
+              }`}
             aria-label="Clear output"
             title="Clear output and errors"
           >
@@ -169,11 +164,10 @@ const OutputSection = ({
           <div className="h-full p-4 overflow-auto">
             {error ? (
               <div
-                className={`p-4 rounded-lg border ${
-                  isDarkMode
+                className={`p-4 rounded-lg border ${isDarkMode
                     ? "bg-red-900/20 border-red-800"
                     : "bg-red-50 border-red-200"
-                }`}
+                  }`}
               >
                 <div className="flex items-start space-x-3">
                   <FontAwesomeIcon
@@ -181,9 +175,8 @@ const OutputSection = ({
                     className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0"
                   />
                   <pre
-                    className={`text-sm whitespace-pre-wrap font-mono flex-1 ${
-                      isDarkMode ? "text-red-400" : "text-red-700"
-                    }`}
+                    className={`text-sm whitespace-pre-wrap font-mono flex-1 ${isDarkMode ? "text-red-400" : "text-red-700"
+                      }`}
                   >
                     {error}
                   </pre>
@@ -193,14 +186,12 @@ const OutputSection = ({
               <div className="flex flex-col items-center justify-center h-full">
                 <FontAwesomeIcon
                   icon={faExclamationTriangle}
-                  className={`w-12 h-12 mb-3 ${
-                    isDarkMode ? "text-[#4a4a4a]" : "text-gray-300"
-                  }`}
+                  className={`w-12 h-12 mb-3 ${isDarkMode ? "text-[#4a4a4a]" : "text-gray-300"
+                    }`}
                 />
                 <p
-                  className={`text-sm font-medium ${
-                    "text-[var(--theme-muted)]"
-                  }`}
+                  className={`text-sm font-medium ${"text-[var(--theme-muted)]"
+                    }`}
                 >
                   No errors
                 </p>
@@ -209,9 +200,8 @@ const OutputSection = ({
           </div>
         )}
         <div
-          className={`border-t flex-shrink-0 ${
-            "border-[var(--theme-border)]"
-          }`}
+          className={`border-t flex-shrink-0 ${"border-[var(--theme-border)]"
+            }`}
         >
           <CustomInput
             input={input}
@@ -220,17 +210,15 @@ const OutputSection = ({
           />
         </div>
         <div
-          className={`p-3 border-t flex-shrink-0 ${
-            "border-[var(--theme-border)] bg-[var(--theme-sidebar)]"
-          }`}
+          className={`p-3 border-t flex-shrink-0 ${"border-[var(--theme-border)] bg-[var(--theme-sidebar)]"
+            }`}
         >
           <button
             onClick={handleCompileAndExecute}
-            className={`w-full flex items-center justify-center space-x-2 py-2.5 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 active:scale-95 ${
-              isDarkMode
+            className={`w-full flex items-center justify-center space-x-2 py-2.5 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 active:scale-95 ${isDarkMode
                 ? "bg-[#2ea44f] hover:bg-[#2c974b] text-[var(--theme-fg)] focus:ring-[#2ea44f] focus:ring-offset-[#1e1e1e]"
                 : "bg-[#2ea44f] hover:bg-[#2c974b] text-[var(--theme-fg)] focus:ring-[#2ea44f] focus:ring-offset-white"
-            }`}
+              }`}
           >
             <FontAwesomeIcon icon={faPlay} className="w-4 h-4" />
             <span>Run Code</span>
