@@ -1,25 +1,20 @@
 import { useState, useCallback, useEffect } from "react";
+// Triggering Vite HMR
 import {
-  getThemeById,
   fontSizeConfig,
   validateFontSize,
   getFontFamilyById,
 } from "../constants/themeConfig";
+import { loadTheme } from "../themes/themeLoader";
 
 /**
  * Custom hook for managing theme and editor customization
  * Handles persistence to localStorage and state management
  */
 const useThemeCustomization = () => {
-  const [theme, setThemeState] = useState(() => {
-    try {
-      const savedTheme = localStorage.getItem("phxcode_theme");
-      return savedTheme || "vs-dark";
-    } catch (error) {
-      console.warn("Failed to load theme from localStorage:", error);
-      return "vs-dark";
-    }
-  });
+  const [theme, setThemeState] = useState("vs-dark");
+  const [themeData, setThemeData] = useState(null);
+  const [isLoadingTheme, setIsLoadingTheme] = useState(true);
 
   const [fontSize, setFontSizeState] = useState(() => {
     try {
@@ -41,16 +36,40 @@ const useThemeCustomization = () => {
     }
   });
 
-  // Set theme and persist to localStorage
-  const setTheme = useCallback((themeId) => {
+  const setTheme = useCallback(async (themeId) => {
+    setIsLoadingTheme(true);
     try {
-      const validTheme = getThemeById(themeId);
-      setThemeState(validTheme.id);
-      localStorage.setItem("phxcode_theme", validTheme.id);
+      const loadedData = await loadTheme(themeId);
+      setThemeState(loadedData.id);
+      setThemeData(loadedData);
+      localStorage.setItem("phxcode_theme", loadedData.id);
     } catch (error) {
-      console.warn("Failed to save theme to localStorage:", error);
+      console.warn(`Failed to load theme ${themeId}:`, error);
+      // Fallback to built-in vs-dark
+      if (themeId !== "vs-dark") {
+        const fallbackData = await loadTheme("vs-dark");
+        setThemeState("vs-dark");
+        setThemeData(fallbackData);
+        localStorage.setItem("phxcode_theme", "vs-dark");
+      }
+    } finally {
+      setIsLoadingTheme(false);
     }
   }, []);
+
+  // Initial load
+  useEffect(() => {
+    const initTheme = async () => {
+      let savedTheme = "vs-dark";
+      try {
+        savedTheme = localStorage.getItem("phxcode_theme") || "vs-dark";
+      } catch (e) {
+        console.warn("Could not read theme from localStorage", e);
+      }
+      await setTheme(savedTheme);
+    };
+    initTheme();
+  }, [setTheme]);
 
   // Set font size and persist to localStorage
   const setFontSize = useCallback((size) => {
@@ -74,9 +93,6 @@ const useThemeCustomization = () => {
     }
   }, []);
 
-  // Get current theme object
-  const currentTheme = getThemeById(theme);
-
   // Get current font family object
   const currentFontFamily = getFontFamilyById(fontFamily);
 
@@ -84,9 +100,10 @@ const useThemeCustomization = () => {
     // Theme
     theme,
     setTheme,
-    currentTheme,
-    isDark: currentTheme.isDark,
-    themeColors: currentTheme.colors,
+    isLoadingTheme,
+    currentTheme: themeData,
+    isDark: themeData ? themeData.isDark : true,
+    themeColors: themeData ? themeData.uiColors : {},
 
     // Font customization
     fontSize,
