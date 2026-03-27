@@ -1,9 +1,3 @@
-/**
- * Centralized Language Configuration
- * Single source of truth for all language metadata
- * Update this file to add/modify language support across the entire application
- */
-
 export const languageConfig = [
   {
     id: "javascript",
