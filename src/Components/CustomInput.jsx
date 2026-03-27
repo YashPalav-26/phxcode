@@ -8,12 +8,12 @@ const CustomInput = ({ input, setInput, isDarkMode }) => {
         <FontAwesomeIcon
           icon={faKeyboard}
           className={`w-4 h-4 ${
-            isDarkMode ? "text-[#858585]" : "text-gray-500"
+            "text-[var(--theme-muted)]"
           }`}
         />
         <span
           className={`text-xs font-semibold uppercase tracking-wide ${
-            isDarkMode ? "text-[#858585]" : "text-gray-500"
+            "text-[var(--theme-muted)]"
           }`}
         >
           Input
@@ -24,8 +24,8 @@ const CustomInput = ({ input, setInput, isDarkMode }) => {
         onChange={(e) => setInput(e.target.value)}
         className={`w-full h-14 p-2.5 rounded-lg text-sm font-mono resize-none focus:outline-none focus:ring-2 transition-colors duration-200 border ${
           isDarkMode
-            ? "bg-[#1e1e1e] text-[#d4d4d4] border-[#3c3c3c] focus:ring-[#007acc] placeholder-[#6b6b6b]"
-            : "bg-gray-50 text-gray-800 border-[#e0e0e0] focus:ring-[#0066b8] placeholder-gray-400"
+            ? "bg-[var(--theme-bg)] text-[var(--theme-fg)] border-[var(--theme-border)] focus:ring-[var(--theme-accent)] placeholder-[#6b6b6b]"
+            : "bg-[var(--theme-bg-hover)] text-gray-800 border-[var(--theme-border)] focus:ring-[var(--theme-accent)] placeholder-gray-400"
         }`}
         placeholder="Enter stdin input (optional)"
         aria-label="Custom input for stdin"

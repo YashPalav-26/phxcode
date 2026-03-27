@@ -1,6 +1,7 @@
-import Editor from "@monaco-editor/react";
+import Editor, { useMonaco } from "@monaco-editor/react";
 import { MONACO_LANGUAGE_MAP } from "../constants/languageConfig";
 import SaveIndicator from "./SaveIndicator";
+import { useEffect } from "react";
 
 const EditorSection = ({
   language,
@@ -14,7 +15,17 @@ const EditorSection = ({
   setIsCodeTouched,
   isSaved,
   saveTimestamp,
+  currentTheme,
 }) => {
+  const monaco = useMonaco();
+
+  useEffect(() => {
+    if (monaco && currentTheme?.monacoThemeData) {
+      monaco.editor.defineTheme(theme, currentTheme.monacoThemeData);
+      monaco.editor.setTheme(theme);
+    }
+  }, [monaco, theme, currentTheme]);
+
   const getMonacoLanguage = (lang) => {
     return MONACO_LANGUAGE_MAP[lang] || "plaintext";
   };
@@ -24,21 +35,19 @@ const EditorSection = ({
       <div
         className={`h-full rounded-lg overflow-hidden border flex flex-col transition-colors duration-200 ${
           isDarkMode
-            ? "bg-[#1e1e1e] border-[#3c3c3c] shadow-lg shadow-black/20"
-            : "bg-white border-[#e0e0e0] shadow-lg shadow-black/5"
+            ? "bg-[var(--theme-bg)] border-[var(--theme-border)] shadow-lg shadow-black/20"
+            : "bg-[var(--theme-bg)] border-[var(--theme-border)] shadow-lg shadow-black/5"
         }`}
       >
         <div
           className={`flex items-center justify-between px-4 py-2.5 border-b flex-shrink-0 ${
-            isDarkMode
-              ? "bg-[#252526] border-[#3c3c3c]"
-              : "bg-[#f8f8f8] border-[#e0e0e0]"
+            "bg-[var(--theme-sidebar)] border-[var(--theme-border)]"
           }`}
         >
           <div className="flex items-center space-x-2">
             <span
               className={`text-sm font-semibold ${
-                isDarkMode ? "text-[#cccccc]" : "text-gray-700"
+                "text-[var(--theme-fg)]"
               }`}
             >
               {language === "cpp"
@@ -47,14 +56,14 @@ const EditorSection = ({
             </span>
             <span
               className={`text-xs ${
-                isDarkMode ? "text-[#858585]" : "text-gray-400"
+                "text-[var(--theme-muted)]"
               }`}
             >
               •
             </span>
             <span
               className={`text-xs ${
-                isDarkMode ? "text-[#858585]" : "text-gray-400"
+                "text-[var(--theme-muted)]"
               }`}
             >
               UTF-8
@@ -68,7 +77,7 @@ const EditorSection = ({
             />
             <span
               className={`text-xs ${
-                isDarkMode ? "text-[#858585]" : "text-gray-400"
+                "text-[var(--theme-muted)]"
               }`}
             >
               Ln 1, Col 1
@@ -139,7 +148,7 @@ const EditorSection = ({
             loading={
               <div
                 className={`flex items-center justify-center h-full ${
-                  isDarkMode ? "text-[#858585]" : "text-gray-400"
+                  "text-[var(--theme-muted)]"
                 }`}
               >
                 <div className="flex flex-col items-center space-y-3">

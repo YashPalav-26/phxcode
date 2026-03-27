@@ -22,8 +22,8 @@ const SaveIndicator = ({ isDarkMode, isSaved, timestamp }) => {
     <div
       className={`flex items-center space-x-1.5 px-2 py-1 rounded text-xs transition-all duration-300 ${
         isDarkMode
-          ? "text-[#4EC9B0] bg-[#1e1e1e]/80"
-          : "text-green-600 bg-white/80"
+          ? "text-[#4EC9B0] bg-[var(--theme-bg)]/80"
+          : "text-green-600 bg-[var(--theme-bg)]/80"
       }`}
     >
       <FontAwesomeIcon icon={faCheck} className="w-3 h-3" />
@@ -31,7 +31,7 @@ const SaveIndicator = ({ isDarkMode, isSaved, timestamp }) => {
       {timestamp && (
         <span
           className={`text-xs ml-1 ${
-            isDarkMode ? "text-[#858585]" : "text-gray-400"
+            "text-[var(--theme-muted)]"
           }`}
         >
           {timestamp}

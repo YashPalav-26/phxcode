@@ -38,6 +38,7 @@ const CodeEditor = () => {
     themeColors,
     currentTheme,
     currentFontFamily,
+    isLoadingTheme,
   } = useThemeCustomization();
 
   // Initialize localStorage hook for current language
@@ -184,14 +185,24 @@ const CodeEditor = () => {
     fontSize,
     fontFamily: currentFontFamily?.value,
     currentTheme,
+    isLoadingTheme,
   };
 
   return (
     <ThemeProvider value={themeContextValue}>
       <div
-        className={`min-h-screen w-full flex flex-col ${
-          isDark ? "bg-[#1e1e1e] text-white" : "bg-[#f5f5f5] text-gray-900"
-        }`}
+        className="min-h-screen w-full flex flex-col bg-[var(--theme-bg)] text-[var(--theme-fg)] transition-colors duration-200"
+        style={{
+          "--theme-bg": themeColors.background || (isDark ? "#1e1e1e" : "#ffffff"),
+          "--theme-bg-hover": themeColors.sidebarLight || (isDark ? "#2d2d2d" : "#f0f0f0"),
+          "--theme-active": themeColors.buttonActive || (isDark ? "#094771" : "#e8f4fc"),
+          "--theme-sidebar": themeColors.sidebar || (isDark ? "#252526" : "#f8f8f8"),
+          "--theme-fg": themeColors.foreground || (isDark ? "#d4d4d4" : "#333333"),
+          "--theme-muted": (isDark ? "#858585" : "#6b7280"),
+          "--theme-border": themeColors.border || (isDark ? "#3c3c3c" : "#e0e0e0"),
+          "--theme-accent": themeColors.accent || (isDark ? "#007acc" : "#0066b8"),
+          "--theme-input": themeColors.input || (isDark ? "#3c3c3c" : "#ffffff"),
+        }}
       >
         {/* Navbar */}
         <Navbar
@@ -237,6 +248,7 @@ const CodeEditor = () => {
               setIsCodeTouched={setIsCodeTouched}
               isSaved={isSaved}
               saveTimestamp={saveTimestamp}
+              currentTheme={currentTheme}
             />
           </div>
 

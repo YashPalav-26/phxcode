@@ -6,19 +6,19 @@ const OutputWindow = ({ output, error, isDarkMode }) => {
     <div className="h-full flex flex-col overflow-hidden">
       <div
         className={`flex-1 p-4 overflow-auto ${
-          isDarkMode ? "bg-[#1e1e1e]" : "bg-white"
+          "bg-[var(--theme-bg)]"
         }`}
       >
         <div className="flex items-center space-x-2 mb-4">
           <FontAwesomeIcon
             icon={faTerminal}
             className={`w-4 h-4 ${
-              isDarkMode ? "text-[#858585]" : "text-gray-500"
+              "text-[var(--theme-muted)]"
             }`}
           />
           <span
             className={`text-xs font-semibold uppercase tracking-wide ${
-              isDarkMode ? "text-[#858585]" : "text-gray-500"
+              "text-[var(--theme-muted)]"
             }`}
           >
             Standard Output
@@ -28,7 +28,7 @@ const OutputWindow = ({ output, error, isDarkMode }) => {
         {output ? (
           <pre
             className={`whitespace-pre-wrap font-mono text-sm leading-relaxed ${
-              isDarkMode ? "text-[#d4d4d4]" : "text-gray-800"
+              isDarkMode ? "text-[var(--theme-fg)]" : "text-gray-800"
             }`}
           >
             {output}
@@ -43,7 +43,7 @@ const OutputWindow = ({ output, error, isDarkMode }) => {
             />
             <p
               className={`text-sm font-medium ${
-                isDarkMode ? "text-[#858585]" : "text-gray-400"
+                "text-[var(--theme-muted)]"
               }`}
             >
               Run your code to see output
@@ -56,8 +56,8 @@ const OutputWindow = ({ output, error, isDarkMode }) => {
         <div
           className={`p-4 border-t ${
             isDarkMode
-              ? "bg-red-900/10 border-[#3c3c3c] border-t-red-800"
-              : "bg-red-50 border-[#e0e0e0] border-t-red-200"
+              ? "bg-red-900/10 border-[var(--theme-border)] border-t-red-800"
+              : "bg-red-50 border-[var(--theme-border)] border-t-red-200"
           }`}
         >
           <pre

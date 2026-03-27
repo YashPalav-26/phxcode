@@ -21,9 +21,7 @@ const CustomizationPanel = ({
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`p-1.5 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 ${
-          isDarkMode
-            ? "hover:bg-[#2d2d2d] focus:ring-[#007acc]"
-            : "hover:bg-gray-100 focus:ring-[#0066b8]"
+          "hover:bg-[var(--theme-bg-hover)] focus:ring-[var(--theme-accent)]"
         }`}
         aria-label="Customization settings"
         title="Editor customization"
@@ -39,20 +37,20 @@ const CustomizationPanel = ({
           <div
             className={`absolute top-full right-0 mt-2 rounded-lg shadow-2xl border z-50 min-w-80 ${
               isDarkMode
-                ? "bg-[#252526] border-[#3c3c3c]"
-                : "bg-white border-[#e0e0e0]"
+                ? "bg-[var(--theme-sidebar)] border-[var(--theme-border)]"
+                : "bg-[var(--theme-bg)] border-[var(--theme-border)]"
             }`}
           >
             <div
               className={`flex items-center justify-between px-4 py-3 border-b ${
                 isDarkMode
-                  ? "border-[#3c3c3c] bg-[#1e1e1e]"
-                  : "border-[#e0e0e0] bg-gray-50"
+                  ? "border-[var(--theme-border)] bg-[var(--theme-bg)]"
+                  : "border-[var(--theme-border)] bg-[var(--theme-bg-hover)]"
               }`}
             >
               <span
                 className={`text-sm font-semibold ${
-                  isDarkMode ? "text-white" : "text-gray-900"
+                  "text-[var(--theme-fg)]"
                 }`}
               >
                 Customization
@@ -61,8 +59,8 @@ const CustomizationPanel = ({
                 onClick={() => setIsOpen(false)}
                 className={`p-1 rounded transition-colors ${
                   isDarkMode
-                    ? "hover:bg-[#3c3c3c] text-[#858585]"
-                    : "hover:bg-gray-200 text-gray-600"
+                    ? "hover:bg-[var(--theme-input)] text-[var(--theme-muted)]"
+                    : "hover:bg-[var(--theme-bg-hover)] text-gray-600"
                 }`}
                 aria-label="Close"
               >
@@ -73,7 +71,7 @@ const CustomizationPanel = ({
               <div>
                 <label
                   className={`block text-xs font-semibold mb-2 ${
-                    isDarkMode ? "text-[#cccccc]" : "text-gray-700"
+                    "text-[var(--theme-fg)]"
                   }`}
                 >
                   Theme
@@ -88,7 +86,7 @@ const CustomizationPanel = ({
                 <label
                   htmlFor="font-family"
                   className={`block text-xs font-semibold mb-2 ${
-                    isDarkMode ? "text-[#cccccc]" : "text-gray-700"
+                    "text-[var(--theme-fg)]"
                   }`}
                 >
                   Font Family
@@ -99,8 +97,8 @@ const CustomizationPanel = ({
                   onChange={(e) => onFontFamilyChange(e.target.value)}
                   className={`w-full px-3 py-2 rounded text-sm border transition-colors focus:outline-none focus:ring-2 ${
                     isDarkMode
-                      ? "bg-[#3c3c3c] border-[#3c3c3c] text-white focus:ring-[#007acc]"
-                      : "bg-white border-[#e0e0e0] text-gray-900 focus:ring-[#0066b8]"
+                      ? "bg-[var(--theme-input)] border-[var(--theme-border)] text-[var(--theme-fg)] focus:ring-[var(--theme-accent)]"
+                      : "bg-[var(--theme-bg)] border-[var(--theme-border)] text-[var(--theme-fg)] focus:ring-[var(--theme-accent)]"
                   }`}
                 >
                   {fontFamilies.map((font) => (
@@ -112,8 +110,8 @@ const CustomizationPanel = ({
                 <div
                   className={`mt-2 text-xs p-2 rounded ${
                     isDarkMode
-                      ? "bg-[#1e1e1e] text-[#858585]"
-                      : "bg-gray-100 text-gray-600"
+                      ? "bg-[var(--theme-bg)] text-[var(--theme-muted)]"
+                      : "bg-[var(--theme-bg-hover)] text-gray-600"
                   }`}
                   style={{
                     fontFamily: currentFontFamily?.value || "monospace",
@@ -127,14 +125,14 @@ const CustomizationPanel = ({
                   <label
                     htmlFor="font-size"
                     className={`text-xs font-semibold ${
-                      isDarkMode ? "text-[#cccccc]" : "text-gray-700"
+                      "text-[var(--theme-fg)]"
                     }`}
                   >
                     Font Size
                   </label>
                   <span
                     className={`text-sm font-mono ${
-                      isDarkMode ? "text-[#007acc]" : "text-[#0066b8]"
+                      "text-[var(--theme-accent)]"
                     }`}
                   >
                     {fontSize}px
@@ -177,14 +175,14 @@ const CustomizationPanel = ({
                 <div className="flex justify-between mt-1">
                   <span
                     className={`text-xs ${
-                      isDarkMode ? "text-[#858585]" : "text-gray-400"
+                      "text-[var(--theme-muted)]"
                     }`}
                   >
                     {fontSizeConfig.min}px
                   </span>
                   <span
                     className={`text-xs ${
-                      isDarkMode ? "text-[#858585]" : "text-gray-400"
+                      "text-[var(--theme-muted)]"
                     }`}
                   >
                     {fontSizeConfig.max}px
@@ -193,9 +191,7 @@ const CustomizationPanel = ({
               </div>
               <div
                 className={`pt-3 border-t text-xs ${
-                  isDarkMode
-                    ? "border-[#3c3c3c] text-[#858585]"
-                    : "border-[#e0e0e0] text-gray-500"
+                  "border-[var(--theme-border)] text-[var(--theme-muted)]"
                 }`}
               >
                 Your preferences are automatically saved and restored on reload.

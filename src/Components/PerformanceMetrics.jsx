@@ -34,8 +34,8 @@ const PerformanceMetrics = ({
         isAnimating ? "opacity-100 scale-100" : "opacity-0 scale-95"
       } ${
         isDarkMode
-          ? "bg-[#1a1a1a] border-[#3c3c3c]"
-          : "bg-[#f8f8f8] border-[#e0e0e0]"
+          ? "bg-[#1a1a1a] border-[var(--theme-border)]"
+          : "bg-[var(--theme-sidebar)] border-[var(--theme-border)]"
       }`}
     >
       {/* Execution Time Metric */}
@@ -44,12 +44,12 @@ const PerformanceMetrics = ({
           <FontAwesomeIcon
             icon={faClock}
             className={`w-3.5 h-3.5 ${
-              isDarkMode ? "text-[#007acc]" : "text-[#0066b8]"
+              "text-[var(--theme-accent)]"
             }`}
           />
           <span
             className={`font-mono ${
-              isDarkMode ? "text-[#858585]" : "text-gray-500"
+              "text-[var(--theme-muted)]"
             }`}
           >
             {displayTime}
@@ -63,12 +63,12 @@ const PerformanceMetrics = ({
           <FontAwesomeIcon
             icon={faMemory}
             className={`w-3.5 h-3.5 ${
-              isDarkMode ? "text-[#007acc]" : "text-[#0066b8]"
+              "text-[var(--theme-accent)]"
             }`}
           />
           <span
             className={`font-mono ${
-              isDarkMode ? "text-[#858585]" : "text-gray-500"
+              "text-[var(--theme-muted)]"
             }`}
           >
             {displayMemory}
