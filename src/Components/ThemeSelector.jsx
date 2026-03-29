@@ -22,7 +22,6 @@ const ThemeSelector = ({ currentTheme, onThemeChange, isDarkMode }) => {
     );
   }, [themes, searchQuery]);
 
-  // Click outside to close
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -37,7 +36,6 @@ const ThemeSelector = ({ currentTheme, onThemeChange, isDarkMode }) => {
     };
   }, [isOpen]);
 
-  // Reset search when closed
   useEffect(() => {
     if (!isOpen) {
       setSearchQuery("");
